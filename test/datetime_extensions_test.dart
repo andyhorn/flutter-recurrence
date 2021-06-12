@@ -118,5 +118,32 @@ void main() {
 
       expect(areSameDay, isTrue);
     });
+
+    test('returns false for different year', () {
+      final DateTime dateOne = DateTime(2021, 01, 01);
+      final DateTime dateTwo = DateTime(2022, 01, 01);
+
+      final bool areSameDay = dateOne.isSameDayAs(dateTwo);
+
+      expect(areSameDay, isFalse);
+    });
+
+    test('returns false for different month', () {
+      final DateTime dateOne = DateTime(2021, 01, 01);
+      final DateTime dateTwo = DateTime(2021, 02, 01);
+
+      final bool areSameDay = dateOne.isSameDayAs(dateTwo);
+
+      expect(areSameDay, isFalse);
+    });
+
+    test('returns false for different day', () {
+      final DateTime dateOne = DateTime(2021, 01, 01);
+      final DateTime dateTwo = DateTime(2021, 01, 02);
+
+      final bool areSameDay = dateOne.isSameDayAs(dateTwo);
+
+      expect(areSameDay, isFalse);
+    });
   });
 }
