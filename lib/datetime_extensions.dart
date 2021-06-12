@@ -15,28 +15,49 @@ extension DateTimeExtension on DateTime {
 
   /// Retrieve an instance of the _nth_ ([occurrence]) [weekday] of the
   /// current [DateTime]'s month, if it exists; otherwise, null.
+  ///
+  /// Supports negative indexing. Ex: -1 for 'last' of the month.
   DateTime? getNthWeekday(int occurrence, int weekday) {
-    DateTime temp = DateTime(year, month, 1);
-    int count = 0;
+    final List<DateTime> weekdays = this._getWeekdays(weekday);
+    int index =
+        occurrence < 0 ? weekdays.length - 1 + occurrence : occurrence - 1;
 
-    while (temp.month == month) {
-      if (temp.weekday == weekday) {
-        count++;
-        temp = temp.add(Duration(days: 7));
-      } else {
-        temp = temp.add(Duration(days: 1));
-      }
-
-      if (count == occurrence) {
-        break;
-      }
+    if (index < 0 || index >= weekdays.length) {
+      return null;
     }
 
-    if (count == occurrence) {
-      return temp;
+    return weekdays[index];
+  }
+
+  List<DateTime> _getWeekdays(int weekday) {
+    final List<DateTime> weekdays = [];
+
+    DateTime date = this._getFirstWeekday(weekday);
+
+    while (date.month == month) {
+      weekdays.add(date);
+      date = date.add(Duration(days: 7));
     }
 
-    return null;
+    return weekdays;
+  }
+
+  DateTime _getFirstWeekday(int weekday) {
+    DateTime date = DateTime(year, month, 1);
+
+    if (date.weekday == weekday) {
+      return date;
+    }
+
+    int diff = date.weekday - weekday;
+
+    if (diff < 0) {
+      diff = 7 + diff - 1;
+    }
+
+    date = date.add(Duration(days: diff));
+
+    return date;
   }
 
   /// Gets the total number of months to get from [other] to the current

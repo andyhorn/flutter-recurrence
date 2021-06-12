@@ -146,4 +146,14 @@ void main() {
       expect(areSameDay, isFalse);
     });
   });
+
+  group('getNthWeekday', () {
+    test('first Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? firstFriday = june.getNthWeekday(1, DateTime.friday);
+
+      expect(firstFriday, isNotNull);
+      expect(firstFriday?.day, equals(4));
+    });
+  });
 }
