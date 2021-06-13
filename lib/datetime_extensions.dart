@@ -1,3 +1,5 @@
+import 'package:recurrence/date_collection.dart';
+
 extension DateTimeExtension on DateTime {
   /// Retrieve the number of days in the current [DateTime]'s month.
   int get daysInMonth {
@@ -13,20 +15,12 @@ extension DateTimeExtension on DateTime {
     return other.year == year && other.month == month && other.day == day;
   }
 
-  /// Retrieve an instance of the _nth_ ([occurrence]) [weekday] of the
-  /// current [DateTime]'s month, if it exists; otherwise, null.
-  ///
-  /// Supports negative indexing. Ex: -1 for 'last' of the month.
-  DateTime? getNthWeekday(int occurrence, int weekday) {
+  /// Get a [DateCollection] containing all instances of [weekday] in the
+  /// current month.
+  DateCollection weekdays(int weekday) {
     final List<DateTime> weekdays = this._getWeekdays(weekday);
-    int index =
-        occurrence < 0 ? weekdays.length - 1 + occurrence : occurrence - 1;
 
-    if (index < 0 || index >= weekdays.length) {
-      return null;
-    }
-
-    return weekdays[index];
+    return DateCollection(weekdays);
   }
 
   List<DateTime> _getWeekdays(int weekday) {

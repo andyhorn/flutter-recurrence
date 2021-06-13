@@ -147,13 +147,103 @@ void main() {
     });
   });
 
-  group('getNthWeekday', () {
+  group('weekdays', () {
     test('first Friday of June 2021', () {
       final DateTime june = DateTime(2021, 06);
-      final DateTime? firstFriday = june.getNthWeekday(1, DateTime.friday);
+      final DateTime? firstFriday = june.weekdays(DateTime.friday).first;
 
       expect(firstFriday, isNotNull);
       expect(firstFriday?.day, equals(4));
+    });
+
+    test('second Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? secondFriday = june.weekdays(DateTime.friday)[1];
+
+      expect(secondFriday, isNotNull);
+      expect(secondFriday?.day, equals(11));
+    });
+
+    test('third Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? thirdFriday = june.weekdays(DateTime.friday)[2];
+
+      expect(thirdFriday, isNotNull);
+      expect(thirdFriday?.day, equals(18));
+    });
+
+    test('fourth Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? fourthFriday = june.weekdays(DateTime.friday)[3];
+
+      expect(fourthFriday, isNotNull);
+      expect(fourthFriday?.day, equals(25));
+    });
+
+    test('no fifth Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? fifthFriday = june.weekdays(DateTime.friday)[4];
+
+      expect(fifthFriday, isNull);
+    });
+
+    test('last Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? lastFriday = june.weekdays(DateTime.friday)[-1];
+
+      expect(lastFriday, isNotNull);
+      expect(lastFriday?.day, equals(25));
+    });
+
+    test('second to last Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? secondToLastFriday = june.weekdays(DateTime.friday)[-2];
+
+      expect(secondToLastFriday, isNotNull);
+      expect(secondToLastFriday?.day, equals(18));
+    });
+
+    test('third to last Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? thirdToLastFriday = june.weekdays(DateTime.friday)[-3];
+
+      expect(thirdToLastFriday, isNotNull);
+      expect(thirdToLastFriday?.day, equals(11));
+    });
+
+    test('fourth to last Friday of June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? fourthToLastFriday = june.weekdays(DateTime.friday)[-4];
+
+      expect(fourthToLastFriday, isNotNull);
+      expect(fourthToLastFriday?.day, equals(4));
+    });
+
+    test('no fifth to last Friday in June 2021', () {
+      final DateTime june = DateTime(2021, 06);
+      final DateTime? fifthToLastFriday = june.weekdays(DateTime.friday)[-5];
+
+      expect(fifthToLastFriday, isNull);
+    });
+  });
+
+  group('differenceInMonths()', () {
+    test('same month returns 0', () {
+      final DateTime dateOne = DateTime(2021, 06);
+      final DateTime dateTwo = DateTime(2021, 06, 02);
+
+      final int difference = dateOne.differenceInMonths(dateTwo);
+
+      expect(difference, equals(0));
+    });
+
+    test('same month, one year later, returns 12', () {
+      final DateTime dateOne = DateTime(2021, 06);
+      final DateTime dateTwo = DateTime(2022, 06);
+
+      final int difference = dateOne.differenceInMonths(dateTwo);
+
+      expect(difference, equals(12));
     });
   });
 }

@@ -29,7 +29,7 @@ class WeekdayOfMonth extends Recurrence {
       return false;
     }
 
-    final DateTime? nthWeekday = date.getNthWeekday(weekOfMonth, weekday);
+    final DateTime? nthWeekday = date.weekdays(weekday)[weekOfMonth - 1];
 
     if (nthWeekday == null) {
       return false;
