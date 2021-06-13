@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recurrence/datetime_extensions.dart';
 
@@ -182,9 +181,8 @@ void main() {
 
     test('no fifth Friday of June 2021', () {
       final DateTime june = DateTime(2021, 06);
-      final DateTime? fifthFriday = june.weekdays(DateTime.friday)[4];
 
-      expect(fifthFriday, isNull);
+      expect(() => june.weekdays(DateTime.friday)[4], throwsRangeError);
     });
 
     test('last Friday of June 2021', () {
@@ -221,9 +219,8 @@ void main() {
 
     test('no fifth to last Friday in June 2021', () {
       final DateTime june = DateTime(2021, 06);
-      final DateTime? fifthToLastFriday = june.weekdays(DateTime.friday)[-5];
 
-      expect(fifthToLastFriday, isNull);
+      expect(() => june.weekdays(DateTime.friday)[-5], throwsRangeError);
     });
   });
 

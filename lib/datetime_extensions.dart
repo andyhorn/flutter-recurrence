@@ -1,4 +1,4 @@
-import 'package:recurrence/date_collection.dart';
+import 'package:recurrence/date_list.dart';
 
 extension DateTimeExtension on DateTime {
   /// Retrieve the number of days in the current [DateTime]'s month.
@@ -15,15 +15,9 @@ extension DateTimeExtension on DateTime {
     return other.year == year && other.month == month && other.day == day;
   }
 
-  /// Get a [DateCollection] containing all instances of [weekday] in the
+  /// Get a [List<DateTime>] containing all instances of [weekday] in the
   /// current month.
-  DateCollection weekdays(int weekday) {
-    final List<DateTime> weekdays = this._getWeekdays(weekday);
-
-    return DateCollection(weekdays);
-  }
-
-  List<DateTime> _getWeekdays(int weekday) {
+  DateList weekdays(int weekday) {
     final List<DateTime> weekdays = [];
 
     DateTime date = this._getFirstWeekday(weekday);
@@ -33,7 +27,7 @@ extension DateTimeExtension on DateTime {
       date = date.add(Duration(days: 7));
     }
 
-    return weekdays;
+    return DateList(weekdays);
   }
 
   DateTime _getFirstWeekday(int weekday) {
