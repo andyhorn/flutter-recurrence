@@ -1,4 +1,5 @@
 enum RecurrenceType {
+  TimeOfDay,
   IntervalDate,
   DayOfMonth,
   DayOfWeek,

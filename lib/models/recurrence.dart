@@ -3,6 +3,7 @@ library recurrence;
 import 'package:recurrence/enums/recurrence_type.dart';
 import 'package:recurrence/utilities/datetime_extensions.dart';
 
+part 'rules/time_of_day.dart';
 part 'rules/interval_date.dart';
 part 'rules/day_of_month.dart';
 part 'rules/day_of_week.dart';

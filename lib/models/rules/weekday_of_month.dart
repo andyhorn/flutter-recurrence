@@ -6,21 +6,19 @@ part of '../recurrence.dart';
 class WeekdayOfMonth extends Recurrence {
   /// Create a new WeekdayOfMonth instance.
   ///
-  /// Throws an [ArgumentError] if [weekOfMonth] is less than one or
-  /// if [startsOn] is null.
+  /// Throws an [ArgumentError] if [weekOfMonth] is less than one.
   WeekdayOfMonth(int weekOfMonth, DateTime startsOn)
       : super([weekOfMonth], startsOn, RecurrenceType.WeekdayOfMonth) {
     if (weekOfMonth < 1) {
       throw ArgumentError.value(
           weekOfMonth, 'weekOfMonth', 'Cannot be less than one');
     }
-
-    if (startsOn == null) {
-      throw ArgumentError.notNull('startsOn');
-    }
   }
 
+  /// Gets the week of the month on which this rule occurs.
   int get weekOfMonth => _values.first;
+
+  /// Gets the weekday on which this rule occurs.
   int get weekday => _startsOn.weekday;
 
   @override

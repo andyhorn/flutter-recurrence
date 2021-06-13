@@ -6,6 +6,7 @@ class MonthOfYear extends Recurrence {
   MonthOfYear(List<int> months, DateTime startsOn)
       : super(months, startsOn, RecurrenceType.MonthOfYear);
 
+  /// Gets the list of [months] on which this rule occurs.
   List<int> get months => _values.toList();
 
   @override

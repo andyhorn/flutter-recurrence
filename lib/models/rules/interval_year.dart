@@ -6,6 +6,7 @@ class IntervalYear extends Recurrence {
   IntervalYear(int interval, DateTime startsOn)
       : super([interval], startsOn, RecurrenceType.IntervalYear);
 
+  /// Gets the interval on which this rule occurs.
   int get interval => _values.first;
 
   @override

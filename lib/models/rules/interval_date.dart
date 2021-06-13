@@ -2,21 +2,17 @@ part of '../recurrence.dart';
 
 /// A recurrence rule that occurs every _n_ days.
 class IntervalDate extends Recurrence {
-  /// Create an [IntervalDate] rule.
+  /// Create an [IntervalDate] instance.
   ///
-  /// Throws an [ArgumentError] if [interval] is less than 1
-  /// or if [startsOn] is null.
+  /// Throws an [ArgumentError] if [interval] is less than 1.
   IntervalDate(int interval, DateTime startsOn)
       : super([interval], startsOn, RecurrenceType.IntervalDate) {
     if (interval < 1) {
       throw ArgumentError.value(interval, 'interval', 'Cannot be less than 1');
     }
-
-    if (startsOn == null) {
-      throw ArgumentError.notNull('startsOn');
-    }
   }
 
+  /// Gets the daily [interval] on which this rule occurs.
   int get interval => _values.first;
 
   @override

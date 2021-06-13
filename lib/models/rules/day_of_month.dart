@@ -1,25 +1,16 @@
 part of '../recurrence.dart';
 
-/// A recurrence rule that occurs on specified days of the month.
+/// A recurrence rule that occurs on one or more specific days of the month.
 ///
 /// Supports negative indexing. Ex: -1 for the last day of the month.
 class DayOfMonth extends Recurrence {
   /// Create a new [DayOfMonth] instance.
   ///
   /// Supports an empty [days] list to indicate _every_ day of the month.
-  ///
-  /// Throws an [ArgumentError] is [days] is null or if [startsOn] is null.
   DayOfMonth(List<int> days, DateTime startsOn)
-      : super(days, startsOn, RecurrenceType.DayOfMonth) {
-    if (days == null) {
-      throw ArgumentError.notNull('days');
-    }
+      : super(days, startsOn, RecurrenceType.DayOfMonth);
 
-    if (startsOn == null) {
-      throw ArgumentError.notNull('startsOn');
-    }
-  }
-
+  /// Gets the list of days on which this rule occurs.
   List<int> get daysOfMonth => _values;
 
   @override

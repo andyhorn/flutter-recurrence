@@ -1,18 +1,13 @@
 part of '../recurrence.dart';
 
-/// A recurrence rule that occurs on a specific day of the week.
+/// A recurrence rule that occurs on one or more specific days of the week.
 class DayOfWeek extends Recurrence {
   /// Create a [DayOfWeek] instance.
   ///
-  /// Throws an [ArgumentError] if [weekdays] is null, empty, or
-  /// contains values outside the inclusive range 1 (Monday) - 7 (Sunday),
-  /// or if [startsOn] is null.
+  /// Throws an [ArgumentError] if [weekdays] is empty or contains values
+  /// outside the inclusive range: 1 (Monday) - 7 (Sunday).
   DayOfWeek(List<int> weekdays, DateTime startsOn)
       : super(weekdays, startsOn, RecurrenceType.DayOfWeek) {
-    if (weekdays == null) {
-      throw ArgumentError.notNull('weekdays');
-    }
-
     if (weekdays.isEmpty) {
       throw ArgumentError.value(weekdays, 'weekdays', 'Cannot be empty');
     }
@@ -22,12 +17,10 @@ class DayOfWeek extends Recurrence {
           .firstWhere((d) => d < DateTime.monday || d > DateTime.sunday);
       throw ArgumentError.value(value, 'weekdays', 'Outside of valid range');
     }
-
-    if (startsOn == null) {
-      throw ArgumentError.notNull('startsOn');
-    }
   }
 
+  /// Gets the list of weekdays (Monday: 1 - Sunday: 7) on which this
+  /// rule occurs.
   List<int> get weekdays => _values;
 
   @override
