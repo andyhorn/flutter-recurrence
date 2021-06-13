@@ -27,7 +27,7 @@ extension DateTimeExtension on DateTime {
       date = date.add(Duration(days: 7));
     }
 
-    return DateList(weekdays);
+    return DateList.from(weekdays);
   }
 
   DateTime _getFirstWeekday(int weekday) {

@@ -82,9 +82,14 @@ class DateList extends ListBase<DateTime> {
     _list[index] = date;
   }
 
-  DateList(Iterable<DateTime> dates) {
-    _list.addAll(dates);
+  static DateList from(Iterable<DateTime> dates) {
+    final DateList dateList = DateList();
+    dateList.addAll(dates);
+
+    return dateList;
   }
+
+  DateList();
 
   /// Sorts the collection in chronological order.
   void sortAscending() {
