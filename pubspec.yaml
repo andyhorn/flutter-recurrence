@@ -1,7 +1,7 @@
 name: recurrence
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: A Dart-native package for defining recurring event rules.
+version: 0.2.0
+homepage: https://www.github.com/andyhorn/flutter-recurrence
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
