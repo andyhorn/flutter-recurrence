@@ -1,7 +1,7 @@
 import 'package:recurrence/date_list.dart';
 
 extension DateTimeExtension on DateTime {
-  /// Retrieve the number of days in the current [DateTime]'s month.
+  /// Retrieve the number of days in the current month.
   int get daysInMonth {
     DateTime temp = DateTime(year, month + 1, 1);
     temp = temp.subtract(Duration(days: 1));
@@ -9,13 +9,13 @@ extension DateTimeExtension on DateTime {
     return temp.day;
   }
 
-  /// Determines if the current [DateTime] on the same Year/Month/Day
-  /// as [other]; ignores the time of day.
+  /// Determines if the current [DateTime] is on the same year, month, & day
+  /// as [other], while ignoring the time of day.
   bool isSameDayAs(DateTime other) {
     return other.year == year && other.month == month && other.day == day;
   }
 
-  /// Get a [List<DateTime>] containing all instances of [weekday] in the
+  /// Get a [DateList] containing all instances of [weekday] in the
   /// current month.
   DateList weekdays(int weekday) {
     final List<DateTime> weekdays = [];
@@ -50,7 +50,7 @@ extension DateTimeExtension on DateTime {
 
   /// Gets the total number of months between [other] and the current [DateTime].
   ///
-  /// Ex: DateTime(2021, 06).differenceInMonths(DateTime(2020, 10)) = 8
+  /// Ex: DateTime(2021, 06).monthsBetween(DateTime(2020, 10)) = 8
   int monthsBetween(DateTime other) {
     final int monthDiff = month - other.month;
     final int yearDiff = year - other.year;
