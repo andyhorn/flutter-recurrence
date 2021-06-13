@@ -13,10 +13,18 @@ class DayOfMonth extends Recurrence {
   /// Gets the list of days on which this rule occurs.
   List<int> get daysOfMonth => _values;
 
+  /// Gets whether this rule occurs on _every_ day of the month
+  /// or not.
+  bool get isEveryDay => _values.isEmpty;
+
   @override
   bool occursOn(DateTime date) {
     if (!super.occursOn(date)) {
       return false;
+    }
+
+    if (isEveryDay) {
+      return true;
     }
 
     final List<int> days = _getAdjustedDates(date);
