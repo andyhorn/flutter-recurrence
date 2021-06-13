@@ -1,4 +1,4 @@
-part of 'recurrence.dart';
+part of '../recurrence.dart';
 
 /// A recurrence rule that occurs on a specific day of the week.
 class DayOfWeek extends Recurrence {

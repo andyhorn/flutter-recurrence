@@ -1,4 +1,4 @@
-part of 'recurrence.dart';
+part of '../recurrence.dart';
 
 class IntervalMonth extends Recurrence {
   IntervalMonth(int interval, DateTime startsOn)

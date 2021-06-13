@@ -1,4 +1,4 @@
-import 'package:recurrence/date_list.dart';
+import 'package:recurrence/models/date_list.dart';
 
 extension DateTimeExtension on DateTime {
   /// Retrieve the number of days in the current month.

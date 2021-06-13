@@ -1,4 +1,4 @@
-part of 'recurrence.dart';
+part of '../recurrence.dart';
 
 /// A recurrence rule that occurs every _n_ years after
 /// the beginning [DateTime].

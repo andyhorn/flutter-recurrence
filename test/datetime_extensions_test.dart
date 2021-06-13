@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recurrence/datetime_extensions.dart';
+import 'package:recurrence/utilities/datetime_extensions.dart';
 
 void main() {
   group('daysInMonth', () {

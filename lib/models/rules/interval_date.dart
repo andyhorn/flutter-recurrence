@@ -1,4 +1,4 @@
-part of 'recurrence.dart';
+part of '../recurrence.dart';
 
 /// A recurrence rule that occurs every _n_ days.
 class IntervalDate extends Recurrence {
