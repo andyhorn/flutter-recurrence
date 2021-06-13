@@ -6,6 +6,7 @@
 
 Easily track recurring events with a set of `Recurrence` rules, including:
 
+  * Time of Day
   * Interval Date
   * Day of the Month
   * Day of the Week
@@ -23,6 +24,24 @@ To use these rules, instantiate the rule with the logic needed for your interval
 # Rules
 
 All `Recurrence` rules implement the abstract `Recurrence` base class and take a `List<int>` and a `DateTime` as their constructor parameters. All rules will use the [DateTime] in the constructor to limit the earliest occurrences of the rule; some rules will also use this value to determine the day of the month or weekday on which the rule occurs.
+
+## Time of Day
+
+The `TimeOfDay` rule occurs at a specific time of day. This is the only rule that deals with time. This is also the only rule that doesn't require a `List<int>` in the constructor.
+
+This rule allows you to specify a `depth` of comparison:
+
+  * 1 - hours only
+  * 2 - hours and minutes
+  * 3 - hours, minutes, and seconds
+  * 4 - hours, minutes, seconds, and milliseconds
+  * 5 - full matching: hours, minutes, seconds, milliseconds, and microseconds
+
+For example, a rule that matches the hour and minute:
+
+```
+TimeOfDay(2, <DateTime containing desired time of day>);
+```
 
 ## Interval Date
 
