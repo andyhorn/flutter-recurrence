@@ -1,9 +1,9 @@
 ## 0.2
-    * Added a new `TimeOfDay` rule for events that occur at specific times, not just on specific days
-    * Finished unit tests for the `DateTimeExtensions`
-    * Added unit tests for the `DayOfMonth` rule
-    * Updated `WeekdayOfMonth` rule to allow multiple [weeksOfMonth] values
-    * Bugfixes and improvements to other rules; improved comments and Dart Docs
+  * Added a new `TimeOfDay` rule for events that occur at specific times, not just on specific days
+  * Finished unit tests for the `DateTimeExtensions`
+  * Added unit tests for the `DayOfMonth` rule
+  * Updated `WeekdayOfMonth` rule to allow multiple [weeksOfMonth] values
+  * Bugfixes and improvements to other rules; improved comments and Dart Docs
 
 ## 0.1 - Initial Publish
 
