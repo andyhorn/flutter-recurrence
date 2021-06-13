@@ -58,7 +58,7 @@ The `DayOfMonth` rule occurs on **one or more** specific days of the month. This
 For example: an event that occurs on the fifteenth and the _last_ day of the month:
 
 ```
-DayOfMonthRule([15, -1], <DateTime>);
+DayOfMonth([15, -1], <DateTime>);
 ```
 
 ## Day of the Week
@@ -68,7 +68,7 @@ The `DayOfWeek` rule occurs on **one or more** specific days of the week, follow
 For example, a rule occuring on Wednesday:
 
 ```
-DayOfweekU[DateTime.wednesday], <DateTime>);
+DayOfWeek([DateTime.wednesday], <DateTime>);
 ```
 
 ## Weekday of the Month
