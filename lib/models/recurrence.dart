@@ -1,6 +1,7 @@
 library recurrence;
 
 import 'package:recurrence/enums/recurrence_type.dart';
+import 'package:recurrence/models/date_list.dart';
 import 'package:recurrence/utilities/datetime_extensions.dart';
 
 part 'rules/time_of_day.dart';
