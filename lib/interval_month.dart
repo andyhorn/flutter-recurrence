@@ -18,7 +18,7 @@ class IntervalMonth extends Recurrence {
       return false;
     }
 
-    final int difference = date.differenceInMonths(_startsOn);
+    final int difference = date.monthsBetween(_startsOn);
 
     return difference % interval == 0;
   }

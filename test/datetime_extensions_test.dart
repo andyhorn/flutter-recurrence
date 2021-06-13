@@ -224,21 +224,30 @@ void main() {
     });
   });
 
-  group('differenceInMonths()', () {
+  group('monthsBetween()', () {
     test('same month returns 0', () {
       final DateTime dateOne = DateTime(2021, 06);
       final DateTime dateTwo = DateTime(2021, 06, 02);
 
-      final int difference = dateOne.differenceInMonths(dateTwo);
+      final int difference = dateOne.monthsBetween(dateTwo);
 
       expect(difference, equals(0));
+    });
+
+    test('year and a half later returns 18', () {
+      final DateTime dateOne = DateTime(2020, 01);
+      final DateTime dateTwo = DateTime(2021, 07);
+
+      final int difference = dateOne.monthsBetween(dateTwo);
+
+      expect(difference, equals(18));
     });
 
     test('same month, one year later, returns 12', () {
       final DateTime dateOne = DateTime(2021, 06);
       final DateTime dateTwo = DateTime(2022, 06);
 
-      final int difference = dateOne.differenceInMonths(dateTwo);
+      final int difference = dateOne.monthsBetween(dateTwo);
 
       expect(difference, equals(12));
     });

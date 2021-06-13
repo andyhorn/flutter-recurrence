@@ -48,12 +48,10 @@ extension DateTimeExtension on DateTime {
     return date;
   }
 
-  /// Gets the total number of months to get from [other] to the current
-  /// [DateTime].
+  /// Gets the total number of months between [other] and the current [DateTime].
   ///
   /// Ex: DateTime(2021, 06).differenceInMonths(DateTime(2020, 10)) = 8
-  /// Ex: DateTime(2020, 10).differenceInMonths(DateTime(2021, 06)) = -8
-  int differenceInMonths(DateTime other) {
+  int monthsBetween(DateTime other) {
     final int monthDiff = month - other.month;
     final int yearDiff = year - other.year;
 
@@ -63,6 +61,6 @@ extension DateTimeExtension on DateTime {
       difference = yearDiff > 1 ? difference + 12 : difference - 12;
     }
 
-    return difference;
+    return difference < 0 ? difference * -1 : difference;
   }
 }
