@@ -23,11 +23,11 @@ To use these rules, instantiate the rule with the logic needed for your interval
 
 # Rules
 
-All `Recurrence` rules implement the abstract `Recurrence` base class and take a `List<int>` and a `DateTime` as their constructor parameters. All rules will use the [DateTime] in the constructor to limit the earliest occurrences of the rule; some rules will also use this value to determine the day of the month or weekday on which the rule occurs.
+All `Recurrence` rules implement the abstract `Recurrence` base class and take either a single `int` or a `List<int>` and a `DateTime` as their constructor parameters. All rules will use the [DateTime] in the constructor to limit the earliest occurrences of the rule; some rules will also use this value to determine additional parameters for the rule.
 
 ## Time of Day
 
-The `TimeOfDay` rule occurs at a specific time of day. This is the only rule that deals with time. This is also the only rule that doesn't require a `List<int>` in the constructor.
+The `TimeOfDay` rule occurs at a specific time of day. This is the only rule that deals directly with time.
 
 This rule allows you to specify a `depth` of comparison:
 
@@ -48,18 +48,22 @@ TimeOfDay(2, <DateTime containing desired time of day>);
 The `IntervalDate` rule occurs every _n_ days. For example, a rule that occurs every `25` days:
 
 ```
-IntervalDate([25], <DateTime>);
+IntervalDate(25, <DateTime>);
 ```
 
 ## Day of the Month
 
-The `DayOfMonth` rule occurs on **one or more** specific days of the month. This rule supports negative indexing.
+The `DayOfMonth` rule occurs on **one or more** specific days of the month. 
+
+This rule supports negative indexing.
 
 For example: an event that occurs on the fifteenth and the _last_ day of the month:
 
 ```
 DayOfMonth([15, -1], <DateTime>);
 ```
+
+**Note:** An empty list will indicate _every_/_any_ day of the month.
 
 ## Day of the Week
 
@@ -73,7 +77,9 @@ DayOfWeek([DateTime.wednesday], <DateTime>);
 
 ## Weekday of the Month
 
-The `WeekdayOfMonth` rule occurs on **one or more** specific weekdays of the month. This rule supports negative indexing.
+The `WeekdayOfMonth` rule occurs on **one or more** specific weekdays of the month. 
+
+This rule supports negative indexing.
 
 This rule combines the weekday-targeting functionality of the `DayOfWeek` rule while also targeting **one or more** specific _weeks_ of the month. 
 
@@ -100,5 +106,5 @@ The `IntervalYear` rule occurs every _n_ years.
 For example, a rule that occurs every _three_ years:
 
 ```
-IntervalYear([3], <DateTime in 2021>);
+IntervalYear(3, <DateTime>);
 ```
