@@ -5,8 +5,6 @@ class DateList extends ListBase<DateTime> {
   final List<DateTime> _list = [];
 
   /// Gets the number of [DateTime] objects in the current collection.
-  ///
-  /// Throws a [RangeError] if the collection is empty.
   int get length => _list.length;
 
   /// Sets the length of the collection.
@@ -22,7 +20,8 @@ class DateList extends ListBase<DateTime> {
     if (length < _list.length) {
       _list.length = length;
     } else {
-      for (var i = 0; i < _list.length - length; i++) {
+      final int toAdd = length - _list.length;
+      for (var i = 0; i < toAdd; i++) {
         _list.add(DateTime(0));
       }
     }

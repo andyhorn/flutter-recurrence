@@ -15,7 +15,7 @@ extension DateTimeExtension on DateTime {
     return other.year == year && other.month == month && other.day == day;
   }
 
-  /// Get a [DateList] containing all instances of [weekday] in the
+  /// Get a [_DateList] containing all instances of [weekday] in the
   /// current month.
   DateList weekdays(int weekday) {
     final List<DateTime> weekdays = [];
