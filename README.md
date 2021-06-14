@@ -21,6 +21,24 @@ Almost any recurrence interval can be modeled using one or a combination of thes
 
 To use these rules, instantiate the rule with the logic needed for your interval and then test it against a `DateTime` object using the `occursOn(DateTime)` method available on every `Recurrence` object.
 
+## Example
+
+For example, a user wants an event that occurs on the third Thursday of the month. 
+
+First, instantiate a `WeekdayOfMonth` object:
+
+```
+final DateTime firstOccurrence = DateTime(...) // a DateTime object occurring on a Thursday
+final WeekdayOfMonth thirdThursday = WeekdayOfMonth([3], firstOccurrence);
+```
+
+Then, you can test this against a DateTime object to determine if it satisfies the rule.
+
+```
+final DateTime testDate = DateTime(...); // some DateTime object
+final bool isThirdThursday = thirdThursday.occursOn(testDate);
+```
+
 # Rules
 
 All `Recurrence` rules implement the abstract `Recurrence` base class and take either a single `int` or a `List<int>` and a `DateTime` as their constructor parameters. All rules will use the [DateTime] in the constructor to limit the earliest occurrences of the rule; some rules will also use this value to determine additional parameters for the rule.
