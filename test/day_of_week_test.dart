@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:recurrence/models/recurrence.dart';
 
 void main() {
-  group('day of week test:', () {
+  group('day_of_week:', () {
     group('invalid values:', () {
       test('less than Monday throws error', () {
         expect(() => DayOfWeek([DateTime.monday - 1], DateTime.now()),
